@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
         skView.multipleTouchEnabled = false
  
         // Create and configure the scene.
-        var scene = GameScene(size: skView.bounds.size)
+        var scene = GuitarScene(size: skView.bounds.size)
         scene.scaleMode = .AspectFill
  
         // Present the scene.

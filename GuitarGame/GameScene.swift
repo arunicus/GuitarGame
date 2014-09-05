@@ -26,59 +26,59 @@ class GameScene: SKScene {
         background.size = CGSize(width: self.size.width-100, height: self.size.height)
         self.addChild(background)
         
-        let lineToDraw = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw, nil, 35, 0)
-        CGPathAddLineToPoint(lineToDraw, nil, 35, self.size.height)
-        string1.path = lineToDraw
-        string1.strokeColor = SKColor.redColor()
-        string1.lineWidth = 10
-        string1.name = "String 1"
-        self.addChild(string1)
-        
-        let lineToDraw2 = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw2, nil, 73, 0)
-        CGPathAddLineToPoint(lineToDraw2, nil, 73, self.size.height)
-        string2.path = lineToDraw2
-        string2.strokeColor = SKColor.redColor()
-        string2.lineWidth = 10
-        string2.name = "String 2"
-        self.addChild(string2)
-        
-        let lineToDraw3 = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw3, nil, 112, 0)
-        CGPathAddLineToPoint(lineToDraw3, nil, 112, self.size.height)
-        string3.path = lineToDraw3
-        string3.strokeColor = SKColor.redColor()
-        string3.lineWidth = 10
-        string3.name = "String 3"
-        self.addChild(string3)
-        
-        let lineToDraw4 = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw4, nil, 149, 0)
-        CGPathAddLineToPoint(lineToDraw4, nil, 149, self.size.height)
-        string4.path = lineToDraw4
-        string4.strokeColor = SKColor.redColor()
-        string4.lineWidth = 10
-        string4.name = "String 4"
-        self.addChild(string4)
-        
-        let lineToDraw5 = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw5, nil, 188, 0)
-        CGPathAddLineToPoint(lineToDraw5, nil, 188, self.size.height)
-        string5.path = lineToDraw5
-        string5.strokeColor = SKColor.redColor()
-        string5.lineWidth = 10
-        string5.name = "String 5"
-        self.addChild(string5)
-        
-        let lineToDraw6 = CGPathCreateMutable()
-        CGPathMoveToPoint(lineToDraw6, nil, 226, 0)
-        CGPathAddLineToPoint(lineToDraw6, nil, 226, self.size.height)
-        string6.path = lineToDraw6
-        string6.strokeColor = SKColor.redColor()
-        string6.lineWidth = 10
-        string6.name = "String 6"
-        self.addChild(string6)
+//        let lineToDraw = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw, nil, 35, 0)
+//        CGPathAddLineToPoint(lineToDraw, nil, 35, self.size.height)
+//        string1.path = lineToDraw
+//        string1.strokeColor = SKColor.redColor()
+//        string1.lineWidth = 10
+//        string1.name = "String 1"
+//        self.addChild(string1)
+//        
+//        let lineToDraw2 = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw2, nil, 73, 0)
+//        CGPathAddLineToPoint(lineToDraw2, nil, 73, self.size.height)
+//        string2.path = lineToDraw2
+//        string2.strokeColor = SKColor.redColor()
+//        string2.lineWidth = 10
+//        string2.name = "String 2"
+//        self.addChild(string2)
+//        
+//        let lineToDraw3 = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw3, nil, 112, 0)
+//        CGPathAddLineToPoint(lineToDraw3, nil, 112, self.size.height)
+//        string3.path = lineToDraw3
+//        string3.strokeColor = SKColor.redColor()
+//        string3.lineWidth = 10
+//        string3.name = "String 3"
+//        self.addChild(string3)
+//        
+//        let lineToDraw4 = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw4, nil, 149, 0)
+//        CGPathAddLineToPoint(lineToDraw4, nil, 149, self.size.height)
+//        string4.path = lineToDraw4
+//        string4.strokeColor = SKColor.redColor()
+//        string4.lineWidth = 10
+//        string4.name = "String 4"
+//        self.addChild(string4)
+//        
+//        let lineToDraw5 = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw5, nil, 188, 0)
+//        CGPathAddLineToPoint(lineToDraw5, nil, 188, self.size.height)
+//        string5.path = lineToDraw5
+//        string5.strokeColor = SKColor.redColor()
+//        string5.lineWidth = 10
+//        string5.name = "String 5"
+//        self.addChild(string5)
+//        
+//        let lineToDraw6 = CGPathCreateMutable()
+//        CGPathMoveToPoint(lineToDraw6, nil, 226, 0)
+//        CGPathAddLineToPoint(lineToDraw6, nil, 226, self.size.height)
+//        string6.path = lineToDraw6
+//        string6.strokeColor = SKColor.redColor()
+//        string6.lineWidth = 10
+//        string6.name = "String 6"
+//        self.addChild(string6)
     }
     
     
@@ -97,22 +97,22 @@ class GameScene: SKScene {
             var stringCombination:String = "";
             
             switch  location.x{
-                case 25...45:
+                case 20...50:
                     stringCombination = "s1"
                     println("String 1")
-                case 63...82:
+                case 58...87:
                     stringCombination = "s2"
                     println("String 2")
-                case 102...123:
+                case 97...128:
                     stringCombination = "s3"
                     println("String 3")
-                case 140...159:
+                case 135...164:
                     stringCombination = "s4"
                     println("String 4")
-                case 180...198:
+                case 175...204:
                     stringCombination = "s5"
                     println("String 5")
-                case 216...236:
+                case 211...241:
                     stringCombination = "s6"
                     println("String 6")
                 default:

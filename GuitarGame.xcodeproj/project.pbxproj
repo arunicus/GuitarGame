@@ -18,6 +18,16 @@
 		B51D3CE319AADF1E00082751 /* D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CDE19AADF1E00082751 /* D.mp3 */; };
 		B51D3CE419AADF1E00082751 /* E.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CDF19AADF1E00082751 /* E.mp3 */; };
 		B51D3CE519AADF1E00082751 /* G.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CE019AADF1E00082751 /* G.mp3 */; };
+		F7361A2C19B8D8B4006203BC /* MusicalNodeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */; };
+		F7361A2E19B8E34C006203BC /* gameover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2D19B8E34C006203BC /* gameover.jpg */; };
+		F7361A3019B91186006203BC /* gameover1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2F19B91186006203BC /* gameover1.png */; };
+		F7361A3219B9229D006203BC /* bgd1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7361A3119B9229D006203BC /* bgd1.jpg */; };
+		F7FEB5A719ABBA8500D936AC /* GuitarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEB5A619ABBA8500D936AC /* GuitarString.swift */; };
+		F7FEB5AB19ABC05900D936AC /* rope.png in Resources */ = {isa = PBXBuildFile; fileRef = F7FEB5AA19ABC05900D936AC /* rope.png */; };
+		F7FEB5AD19ABC07300D936AC /* GuitarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */; };
+		F7FEB5B119AF9E9800D936AC /* quarter_note.png in Resources */ = {isa = PBXBuildFile; fileRef = F7FEB5B019AF9E9800D936AC /* quarter_note.png */; };
+		F7FEB5B319AFA15E00D936AC /* Treble-clef.png in Resources */ = {isa = PBXBuildFile; fileRef = F7FEB5B219AFA15E00D936AC /* Treble-clef.png */; };
+		F7FEB5B519B10FE700D936AC /* woodbackgrd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7FEB5B419B10FE700D936AC /* woodbackgrd.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +56,16 @@
 		B51D3CDE19AADF1E00082751 /* D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = D.mp3; sourceTree = "<group>"; };
 		B51D3CDF19AADF1E00082751 /* E.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E.mp3; sourceTree = "<group>"; };
 		B51D3CE019AADF1E00082751 /* G.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G.mp3; sourceTree = "<group>"; };
+		F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicalNodeUtil.swift; sourceTree = "<group>"; };
+		F7361A2D19B8E34C006203BC /* gameover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameover.jpg; sourceTree = "<group>"; };
+		F7361A2F19B91186006203BC /* gameover1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover1.png; sourceTree = "<group>"; };
+		F7361A3119B9229D006203BC /* bgd1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgd1.jpg; sourceTree = "<group>"; };
+		F7FEB5A619ABBA8500D936AC /* GuitarString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarString.swift; sourceTree = "<group>"; };
+		F7FEB5AA19ABC05900D936AC /* rope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rope.png; sourceTree = "<group>"; };
+		F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarScene.swift; sourceTree = "<group>"; };
+		F7FEB5B019AF9E9800D936AC /* quarter_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quarter_note.png; sourceTree = "<group>"; };
+		F7FEB5B219AFA15E00D936AC /* Treble-clef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Treble-clef.png"; sourceTree = "<group>"; };
+		F7FEB5B419B10FE700D936AC /* woodbackgrd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodbackgrd.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +109,9 @@
 			children = (
 				B51D3CB319AA8D2500082751 /* AppDelegate.swift */,
 				B51D3CB719AA8D2500082751 /* GameScene.swift */,
+				F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */,
+				F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */,
+				F7FEB5A619ABBA8500D936AC /* GuitarString.swift */,
 				B51D3CB919AA8D2500082751 /* GameViewController.swift */,
 				B51D3CBB19AA8D2500082751 /* Main.storyboard */,
 				B51D3CBE19AA8D2500082751 /* Images.xcassets */,
@@ -100,7 +123,14 @@
 		B51D3CB119AA8D2500082751 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F7361A3119B9229D006203BC /* bgd1.jpg */,
+				F7361A2F19B91186006203BC /* gameover1.png */,
+				F7361A2D19B8E34C006203BC /* gameover.jpg */,
+				F7FEB5B419B10FE700D936AC /* woodbackgrd.jpg */,
+				F7FEB5B019AF9E9800D936AC /* quarter_note.png */,
 				B51D3CDC19AADF1E00082751 /* A.mp3 */,
+				F7FEB5AA19ABC05900D936AC /* rope.png */,
+				F7FEB5B219AFA15E00D936AC /* Treble-clef.png */,
 				B51D3CDD19AADF1E00082751 /* B.mp3 */,
 				B51D3CDE19AADF1E00082751 /* D.mp3 */,
 				B51D3CDF19AADF1E00082751 /* E.mp3 */,
@@ -208,10 +238,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51D3CE419AADF1E00082751 /* E.mp3 in Resources */,
+				F7361A2E19B8E34C006203BC /* gameover.jpg in Resources */,
+				F7FEB5B519B10FE700D936AC /* woodbackgrd.jpg in Resources */,
+				F7361A3019B91186006203BC /* gameover1.png in Resources */,
+				F7FEB5AB19ABC05900D936AC /* rope.png in Resources */,
 				B51D3CBF19AA8D2500082751 /* Images.xcassets in Resources */,
 				B51D3CE119AADF1E00082751 /* A.mp3 in Resources */,
+				F7361A3219B9229D006203BC /* bgd1.jpg in Resources */,
 				B51D3CE319AADF1E00082751 /* D.mp3 in Resources */,
+				F7FEB5B119AF9E9800D936AC /* quarter_note.png in Resources */,
 				B51D3CE219AADF1E00082751 /* B.mp3 in Resources */,
+				F7FEB5B319AFA15E00D936AC /* Treble-clef.png in Resources */,
 				B51D3CE519AADF1E00082751 /* G.mp3 in Resources */,
 				B51D3CBD19AA8D2500082751 /* Main.storyboard in Resources */,
 			);
@@ -231,6 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7FEB5A719ABBA8500D936AC /* GuitarString.swift in Sources */,
+				F7FEB5AD19ABC07300D936AC /* GuitarScene.swift in Sources */,
+				F7361A2C19B8D8B4006203BC /* MusicalNodeUtil.swift in Sources */,
 				B51D3CB819AA8D2500082751 /* GameScene.swift in Sources */,
 				B51D3CBA19AA8D2500082751 /* GameViewController.swift in Sources */,
 				B51D3CB419AA8D2500082751 /* AppDelegate.swift in Sources */,
@@ -352,6 +392,7 @@
 				INFOPLIST_FILE = GuitarGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -363,6 +404,7 @@
 				INFOPLIST_FILE = GuitarGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -419,6 +461,7 @@
 				B51D3CD019AA8D2500082751 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B51D3CD119AA8D2500082751 /* Build configuration list for PBXNativeTarget "GuitarGameTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +470,7 @@
 				B51D3CD319AA8D2500082751 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
