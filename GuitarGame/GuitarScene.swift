@@ -104,7 +104,7 @@ class GuitarScene: SKScene {
         var guitBgrnd = SKSpriteNode(imageNamed: "woodbackgrd.jpg")
         guitBgrnd.size = CGSizeMake((distanceBetweenStrings * 5) + CGFloat(20.0), top + 5)
         guitBgrnd.position = CGPoint(x: (self.frame.size.width/2 - 3) , y: top - guitBgrnd.size.height / 2 + 5)
-        self.addChild(guitBgrnd)
+        //self.addChild(guitBgrnd)
     }
     
     func createMusicalChord(){
@@ -176,7 +176,7 @@ class GuitarScene: SKScene {
             self.anchor = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 5, height: 5))
             self.anchor.position = CGPoint(x: stringWidth, y: top)
             self.anchor.physicsBody = SKPhysicsBody(rectangleOfSize: anchor.frame.size)
-            self.anchor.physicsBody.dynamic = false
+            self.anchor.physicsBody!.dynamic = false
             
             self.addChild(self.anchor)
             
@@ -184,8 +184,8 @@ class GuitarScene: SKScene {
             self.player = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 5, height: 5))
             self.player.position = CGPoint(x: stringWidth, y: bottom)
             self.player.physicsBody = SKPhysicsBody(rectangleOfSize: player.frame.size)
-            self.player.physicsBody.mass = 999999
-            self.player.physicsBody.dynamic = true
+            self.player.physicsBody!.mass = 999999
+            self.player.physicsBody!.dynamic = true
             self.addChild(self.player)
             if(i  < 5){
                 addRope(28, topNode: self.anchor, bottomNode: self.player , widthStr: 0.65 * CGFloat(numberOfString - i + 1) , strColor: gold )
@@ -232,11 +232,11 @@ class GuitarScene: SKScene {
             let nodeAtPoint = self.nodeAtPoint(location)
             
             if (nodeAtPoint.name != nil) {
-                playSound(nodeAtPoint.name)
+                playSound(nodeAtPoint.name!)
                 let ropeNode = self.nodesAtPoint(nodeAtPoint.position)[1] as SKSpriteNode
                 if( ropeNode.name == "rope" )
                 {
-                    ropeNode.physicsBody.applyImpulse(CGVector(1,0))
+                    ropeNode.physicsBody!.applyImpulse(CGVector(1,0))
                 }
                 
                 if(notesToBeplayedArray.count > 0)
@@ -349,7 +349,7 @@ class GuitarScene: SKScene {
                 self.restartbutton.setTitle("Restart Game", forState: UIControlState.Normal)
                 self.restartbutton.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
                 
-                self.view.addSubview(self.restartbutton)
+                self.view!.addSubview(self.restartbutton)
             }
         })
         musicalNode.runAction(SKAction.sequence([actionMove, actionrun , actionMoveDone]))

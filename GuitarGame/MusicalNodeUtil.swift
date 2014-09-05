@@ -21,9 +21,9 @@ class MusicalNodeUtil {
         
         // Give the node sprite a physics body
         musicalNode.physicsBody = SKPhysicsBody(circleOfRadius: musicalNode.size.width / 2)
-        musicalNode.physicsBody.dynamic = true
-        musicalNode.physicsBody.affectedByGravity = false;
-        musicalNode.physicsBody.usesPreciseCollisionDetection = true
+        musicalNode.physicsBody!.dynamic = true
+        musicalNode.physicsBody!.affectedByGravity = false;
+        musicalNode.physicsBody!.usesPreciseCollisionDetection = true
         
         return musicalNode
     }

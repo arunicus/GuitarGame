@@ -59,9 +59,9 @@ class Rope : SKNode {
             ropePiece.position = CGPoint(x: x, y: y)
             
             ropePiece.physicsBody = SKPhysicsBody(rectangleOfSize: ropePiece.size)
-            ropePiece.physicsBody.collisionBitMask = 2
-            ropePiece.physicsBody.categoryBitMask = 2
-            ropePiece.physicsBody.contactTestBitMask = 2
+            ropePiece.physicsBody!.collisionBitMask = 2
+            ropePiece.physicsBody!.categoryBitMask = 2
+            ropePiece.physicsBody!.contactTestBitMask = 2
             
             self.parentScene.addChild(ropePiece)
             
