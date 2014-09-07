@@ -34,7 +34,8 @@ class GuitarScene: SKScene {
     var nodesPlayedLabel = SKLabelNode();
     var playing:Bool = true
     var restartbutton   = UIButton.buttonWithType(UIButtonType.System) as UIButton
-    var silver = UIColor(red: 239.0/255.0, green: 239.0/255.0, blue: 239.0/255.0, alpha: 1)
+    var fretColor = UIColor(red: 215.0/255.0, green: 215.0/255.0, blue: 215.0/255.0, alpha: 1)
+    var silver = UIColor(red: 239.0/255.0, green: 215.0/255.0, blue: 239.0/255.0, alpha: 1)
     var gold = UIColor(red: 245.0/255.0, green: 215.0/255.0, blue: 0/255.0, alpha: 1)
 
 
@@ -174,7 +175,7 @@ class GuitarScene: SKScene {
             
             // Static Body
             self.anchor = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 5, height: 5))
-            self.anchor.position = CGPoint(x: stringWidth, y: top)
+            self.anchor.position = CGPoint(x: stringWidth, y: top + 20)
             self.anchor.physicsBody = SKPhysicsBody(rectangleOfSize: anchor.frame.size)
             self.anchor.physicsBody!.dynamic = false
             
@@ -188,10 +189,10 @@ class GuitarScene: SKScene {
             self.player.physicsBody!.dynamic = true
             self.addChild(self.player)
             if(i  < 5){
-                addRope(28, topNode: self.anchor, bottomNode: self.player , widthStr: 0.65 * CGFloat(numberOfString - i + 1) , strColor: gold )
+                addRope(30, topNode: self.anchor, bottomNode: self.player , widthStr: 0.65 * CGFloat(numberOfString - i + 1) , strColor: UIColor.redColor() )
             }
             else{
-                addRope(28, topNode: self.anchor, bottomNode: self.player , widthStr: 1 * CGFloat(numberOfString - i + 1) , strColor: silver)
+                addRope(30, topNode: self.anchor, bottomNode: self.player , widthStr: 1 * CGFloat(numberOfString - i + 1) , strColor: UIColor.greenColor())
             }
             
         }
@@ -230,10 +231,13 @@ class GuitarScene: SKScene {
             
             let location: CGPoint! = touch.locationInNode(self)
             let nodeAtPoint = self.nodeAtPoint(location)
-            
+            println(nodeAtPoint)
             if (nodeAtPoint.name != nil) {
                 playSound(nodeAtPoint.name!)
-                let ropeNode = self.nodesAtPoint(nodeAtPoint.position)[1] as SKSpriteNode
+                let nodeall = self.nodesAtPoint(nodeAtPoint.position)
+                println(nodeall)
+                let ropeNode = self.nodesAtPoint(nodeAtPoint.position)[0] as SKSpriteNode
+                println(ropeNode)
                 if( ropeNode.name == "rope" )
                 {
                     ropeNode.physicsBody!.applyImpulse(CGVector(1,0))
@@ -242,8 +246,8 @@ class GuitarScene: SKScene {
                 if(notesToBeplayedArray.count > 0)
                 {
                     var musicNode = notesToBeplayedArray.objectAtIndex(0) as SKSpriteNode
-                    println(notesToBeplayedArray.objectAtIndex(0))
-                    println(self.playArea.frame.contains(musicNode.position))
+                    //println(notesToBeplayedArray.objectAtIndex(0))
+                    //println(self.playArea.frame.contains(musicNode.position))
                     
                     if(self.playArea.frame.contains(musicNode.position))
                     {
