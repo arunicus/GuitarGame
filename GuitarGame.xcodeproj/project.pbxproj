@@ -18,6 +18,7 @@
 		B51D3CE319AADF1E00082751 /* D.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CDE19AADF1E00082751 /* D.mp3 */; };
 		B51D3CE419AADF1E00082751 /* E.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CDF19AADF1E00082751 /* E.mp3 */; };
 		B51D3CE519AADF1E00082751 /* G.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B51D3CE019AADF1E00082751 /* G.mp3 */; };
+		BCFFD25619C5121C00C94A10 /* midiPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFFD25519C5121C00C94A10 /* midiPlayer.swift */; };
 		F7361A2C19B8D8B4006203BC /* MusicalNodeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */; };
 		F7361A2E19B8E34C006203BC /* gameover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2D19B8E34C006203BC /* gameover.jpg */; };
 		F7361A3019B91186006203BC /* gameover1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2F19B91186006203BC /* gameover1.png */; };
@@ -56,6 +57,7 @@
 		B51D3CDE19AADF1E00082751 /* D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = D.mp3; sourceTree = "<group>"; };
 		B51D3CDF19AADF1E00082751 /* E.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E.mp3; sourceTree = "<group>"; };
 		B51D3CE019AADF1E00082751 /* G.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G.mp3; sourceTree = "<group>"; };
+		BCFFD25519C5121C00C94A10 /* midiPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = midiPlayer.swift; sourceTree = "<group>"; };
 		F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicalNodeUtil.swift; sourceTree = "<group>"; };
 		F7361A2D19B8E34C006203BC /* gameover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameover.jpg; sourceTree = "<group>"; };
 		F7361A2F19B91186006203BC /* gameover1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover1.png; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				B51D3CBB19AA8D2500082751 /* Main.storyboard */,
 				B51D3CBE19AA8D2500082751 /* Images.xcassets */,
 				B51D3CB119AA8D2500082751 /* Supporting Files */,
+				BCFFD25519C5121C00C94A10 /* midiPlayer.swift */,
 			);
 			path = GuitarGame;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				F7361A2C19B8D8B4006203BC /* MusicalNodeUtil.swift in Sources */,
 				B51D3CB819AA8D2500082751 /* GameScene.swift in Sources */,
 				B51D3CBA19AA8D2500082751 /* GameViewController.swift in Sources */,
+				BCFFD25619C5121C00C94A10 /* midiPlayer.swift in Sources */,
 				B51D3CB419AA8D2500082751 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
