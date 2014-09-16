@@ -57,6 +57,7 @@
 		B51D3CDE19AADF1E00082751 /* D.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = D.mp3; sourceTree = "<group>"; };
 		B51D3CDF19AADF1E00082751 /* E.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = E.mp3; sourceTree = "<group>"; };
 		B51D3CE019AADF1E00082751 /* G.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G.mp3; sourceTree = "<group>"; };
+		BCBA547119C7D2DA00A28E93 /* GeneralUser GS SoftSynth v1.44.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralUser GS SoftSynth v1.44.sf2"; sourceTree = "<group>"; };
 		BCFFD25519C5121C00C94A10 /* midiPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = midiPlayer.swift; sourceTree = "<group>"; };
 		F7361A2B19B8D8B4006203BC /* MusicalNodeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicalNodeUtil.swift; sourceTree = "<group>"; };
 		F7361A2D19B8E34C006203BC /* gameover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameover.jpg; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		B51D3CB019AA8D2500082751 /* GuitarGame */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA547119C7D2DA00A28E93 /* GeneralUser GS SoftSynth v1.44.sf2 */,
 				B51D3CB319AA8D2500082751 /* AppDelegate.swift */,
 				B51D3CB719AA8D2500082751 /* GameScene.swift */,
 				F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */,
