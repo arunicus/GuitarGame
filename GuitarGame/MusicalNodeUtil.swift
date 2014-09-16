@@ -12,6 +12,18 @@ import AVFoundation
 
 
 class MusicalNodeUtil {
+    var musicArray: NSMutableArray = NSMutableArray()
+    
+    init(fileName: String){
+        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(fileName) {
+            println(dictionary)
+            if let tilesArray: AnyObject = dictionary["notes"] {
+                println(tilesArray)
+                musicArray.addObjectsFromArray(tilesArray as Array)
+            }
+        }
+        
+    }
     
     func createMusicalNode(nodeName: String) -> SKSpriteNode{
         
@@ -26,6 +38,16 @@ class MusicalNodeUtil {
         musicalNode.physicsBody!.usesPreciseCollisionDetection = true
         
         return musicalNode
+    }
+    
+    func containsMoreNode() -> Bool
+    {
+        return (musicArray.count > 0)
+    }
+    func getNextNode() -> String {
+        var node = musicArray.objectAtIndex(0) as String
+        musicArray.removeObjectAtIndex(0)
+        return node;
     }
     
     func createSoundForNode(stringCombination: String) -> AVAudioPlayer{

@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Arun Venkatesh. All rights reserved.
 //
 
+// touch01 = F
+//touch02 = A#
+
+
 import SpriteKit
 import AVFoundation
 
@@ -22,22 +26,29 @@ class GuitarScene: SKScene {
     var distanceBetweenNodes:CGFloat = 60
     var musicArray: NSMutableArray = NSMutableArray()
     var notesToBeplayedArray: NSMutableArray = NSMutableArray()
+    var midiHelper:MidiPlayer = MidiPlayer()
     var lastUpdateTimeInterval: CFTimeInterval = 0
     var gameSpeed:Int = 1
     var currentNodesPlayed:Int = 0
     var increaseLevelNodesPlayed:Int = 10
     var deltaValue:CFTimeInterval = 4.0
     var failCount:Int = 0
-    var musicStaffUtil = MusicalNodeUtil()
+    var musicStaffUtil = MusicalNodeUtil(fileName: "level1")
     var missedCountLabel = SKLabelNode();
     var gameLevelLabel = SKLabelNode();
     var nodesPlayedLabel = SKLabelNode();
     var playing:Bool = true
     var restartbutton   = UIButton.buttonWithType(UIButtonType.System) as UIButton
+    var nextLevelbutton   = UIButton.buttonWithType(UIButtonType.System) as UIButton
     var fretColor = UIColor(red: 215.0/255.0, green: 215.0/255.0, blue: 215.0/255.0, alpha: 1)
     var silver = UIColor(red: 239.0/255.0, green: 215.0/255.0, blue: 239.0/255.0, alpha: 1)
     var gold = UIColor(red: 245.0/255.0, green: 215.0/255.0, blue: 0/255.0, alpha: 1)
-
+    var nodeDictionary = [  "01":"F","02":"A#","03":"D#","04":"G#","05":"C","06":"F",
+                            "11":"F","12":"A#","13":"D#","14":"G#","15":"C","16":"F",
+                            "21":"F","22":"A#","23":"D#","24":"G#","25":"C","26":"F",
+                            "31":"F","32":"A#","33":"D#","34":"G#","35":"C","36":"F",
+                            "41":"F","42":"A#","43":"D#","44":"G#","45":"C","46":"F",
+                            "51":"F","52":"A#","53":"D#","54":"G#","55":"C","56":"F"]
 
     
     required init(coder aDecoder: NSCoder)  {
@@ -75,8 +86,7 @@ class GuitarScene: SKScene {
         createMusicalChord()
         playSound("aa")
         createGameStatus()
-        //updateClock()
-
+        //addEmitterParticles()
     }
     
     func resetGameState(){
@@ -93,7 +103,7 @@ class GuitarScene: SKScene {
         increaseLevelNodesPlayed = 10
         deltaValue = 4.0
         failCount = 0
-        musicStaffUtil = MusicalNodeUtil()
+        musicStaffUtil = MusicalNodeUtil(fileName: "level1")
         missedCountLabel = SKLabelNode();
         gameLevelLabel = SKLabelNode();
         nodesPlayedLabel = SKLabelNode();
@@ -110,7 +120,7 @@ class GuitarScene: SKScene {
     
     func createMusicalChord(){
         
-        self.playArea = SKSpriteNode(color: UIColor.yellowColor(), size: CGSize(width: 40, height: 80))
+        self.playArea = SKSpriteNode(color: UIColor.yellowColor(), size: CGSize(width: 40, height: 120))
         self.playArea.position.x = 60
         self.playArea.position.y = top  + (4 * 20)
         
@@ -134,21 +144,14 @@ class GuitarScene: SKScene {
         
     }
     
-    func updateClock() {
-        var actionwait = SKAction.waitForDuration(2.0)
-        var actionrun = SKAction.runBlock({
-            self.fireMusicalNode()
-        })
-        self.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
-    }
-    
+
     func createTouchArea(){
         for j in 1...6{
             for i in 0...6
             {
                 var touchNode = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 40, height: 40))
                 touchNode.position = CGPoint(x: CGFloat(j) * distanceBetweenStrings , y: top - (CGFloat(i + 1) * distanceBetweenNodes/2.0) - (CGFloat(i) * (distanceBetweenNodes/2.0)))
-                touchNode.name = "touch" + String(i) +  String(j)
+                touchNode.name = nodeDictionary[String(i) +  String(j)]
                 self.addChild(touchNode)
             }
         }
@@ -199,6 +202,7 @@ class GuitarScene: SKScene {
         
     }
     
+    
     func addRope(numberOfAttaches: Int,topNode: SKSpriteNode,bottomNode: SKSpriteNode , widthStr: CGFloat , strColor: UIColor){
         var previousNode = topNode
         var joinHeight = 10.0
@@ -231,13 +235,10 @@ class GuitarScene: SKScene {
             
             let location: CGPoint! = touch.locationInNode(self)
             let nodeAtPoint = self.nodeAtPoint(location)
-            println(nodeAtPoint)
             if (nodeAtPoint.name != nil) {
-                playSound(nodeAtPoint.name!)
+                
                 let nodeall = self.nodesAtPoint(nodeAtPoint.position)
-                println(nodeall)
                 let ropeNode = self.nodesAtPoint(nodeAtPoint.position)[0] as SKSpriteNode
-                println(ropeNode)
                 if( ropeNode.name == "rope" )
                 {
                     ropeNode.physicsBody!.applyImpulse(CGVector(1,0))
@@ -246,10 +247,17 @@ class GuitarScene: SKScene {
                 if(notesToBeplayedArray.count > 0)
                 {
                     var musicNode = notesToBeplayedArray.objectAtIndex(0) as SKSpriteNode
+                    println(nodeAtPoint.name!)
+                    println(musicNode.name!)
+                    if(nodeAtPoint.name! == musicNode.name!)
+                    {
+                        playSound(musicNode.name!)
+                    }
+
                     //println(notesToBeplayedArray.objectAtIndex(0))
                     //println(self.playArea.frame.contains(musicNode.position))
                     
-                    if(self.playArea.frame.contains(musicNode.position))
+                    if(musicNode.position.x >= 40 && musicNode.position.x <= 80)
                     {
                         musicNode.removeAllActions()
                         self.notesToBeplayedArray.removeObject(musicNode)
@@ -272,6 +280,10 @@ class GuitarScene: SKScene {
                             }
                         }
                         self.nodesPlayedLabel.text = "Played : " + String(currentNodesPlayed)
+                        if(self.notesToBeplayedArray.count == 0  && !self.musicStaffUtil.containsMoreNode())
+                        {
+                            self.createSuccessStatusPag()
+                        }
                     }else if(musicNode.position.x > (self.playArea.position.x + self.playArea.frame.width))
                     {
                         println("BEFOREEEE")
@@ -292,7 +304,7 @@ class GuitarScene: SKScene {
 
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
 //        for touch: AnyObject in touches {
 //            
 //            let location: CGPoint! = touch.locationInNode(self)
@@ -318,12 +330,40 @@ class GuitarScene: SKScene {
 
     }
     
+    func getYPositionforMusicalNote(nextNode: String) -> CGFloat
+    {
+        switch nextNode{
+            case "G":
+                return self.size.height - 62
+            case "F":
+                return self.size.height - 72
+            case "E":
+                return self.size.height - 82
+            case "D":
+                return self.size.height - 92
+            case "C":
+                return self.size.height - 102
+            case "B":
+                return self.size.height - 112
+            case "A":
+                return self.size.height - 122
+            case "G":
+                return self.size.height - 132
+            case "F":
+                return self.size.height - 142
+            default:
+                return self.size.height - 152
+            
+        }
+    }
+    
     
     func fireMusicalNode()
     {
-        let musicalNode = musicStaffUtil.createMusicalNode("A#")
+        var nextNode = musicStaffUtil.getNextNode()
+        let musicalNode = musicStaffUtil.createMusicalNode(nextNode)
         musicalNode.position.x = self.size.width
-        musicalNode.position.y = self.size.height - 120
+        musicalNode.position.y = self.getYPositionforMusicalNote(nextNode)
         
         addChild(musicalNode)
         notesToBeplayedArray.addObject(musicalNode)
@@ -390,6 +430,53 @@ class GuitarScene: SKScene {
 
     }
     
+    func createSuccessStatusPag()
+    {
+        self.removeAllChildren()
+        self.playing = false
+
+        
+        self.nextLevelbutton.frame = CGRectMake(100, 300, 100, 50)
+        self.nextLevelbutton.backgroundColor = UIColor.blackColor()
+        self.nextLevelbutton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.nextLevelbutton.setTitle("Next Level", forState: UIControlState.Normal)
+        self.nextLevelbutton.addTarget(self, action: "nextLevelButton:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(self.nextLevelbutton)
+        
+    }
+    
+    func nextLevelButton(sender:UIButton!)
+    {
+        println("Button tapped")
+        self.nextLevelbutton.removeFromSuperview()
+        startGame()
+    }
+    
+    func addEmitterParticles(){
+        
+        let sparkEmmiter = particleEmitterWithName("trail")
+        
+        sparkEmmiter!.position = CGPointMake(self.frame.size.width/2, self.frame.size.height - 10)
+        sparkEmmiter!.name = "sparkEmmitter"
+        sparkEmmiter!.targetNode = self
+        
+        self.addChild(sparkEmmiter!)
+    }
+    
+    func particleEmitterWithName(name : NSString) -> SKEmitterNode?
+    {
+        let path = NSBundle.mainBundle().pathForResource(name, ofType: "sks")
+        
+        var sceneData = NSData.dataWithContentsOfFile(path!, options: .DataReadingMappedIfSafe, error: nil)
+        var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+        
+        archiver.setClass(SKEmitterNode.self, forClassName: "SKEditorScene")
+        let node = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as SKEmitterNode?
+        archiver.finishDecoding()
+        return node
+    }
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         if(playing == true)
@@ -398,8 +485,15 @@ class GuitarScene: SKScene {
     
             if (delta > deltaValue) {
                 delta = 0;
-                fireMusicalNode()
                 lastUpdateTimeInterval = currentTime;
+                if(musicStaffUtil.containsMoreNode())
+                {
+                    fireMusicalNode()
+                }
+                else
+                {
+                    //game level is done
+                }
             }
         }
     }
