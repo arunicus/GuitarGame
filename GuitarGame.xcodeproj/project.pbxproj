@@ -23,6 +23,8 @@
 		F7361A2E19B8E34C006203BC /* gameover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2D19B8E34C006203BC /* gameover.jpg */; };
 		F7361A3019B91186006203BC /* gameover1.png in Resources */ = {isa = PBXBuildFile; fileRef = F7361A2F19B91186006203BC /* gameover1.png */; };
 		F7361A3219B9229D006203BC /* bgd1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F7361A3119B9229D006203BC /* bgd1.jpg */; };
+		F73CD5AF19CA87ED0006F6FD /* GeneralUser GS SoftSynth v1.44.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = BCBA547119C7D2DA00A28E93 /* GeneralUser GS SoftSynth v1.44.sf2 */; };
+		F7B8EB5419C89E3100EC6E1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B8EB5319C89E3100EC6E1F /* Extensions.swift */; };
 		F7FEB5A719ABBA8500D936AC /* GuitarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEB5A619ABBA8500D936AC /* GuitarString.swift */; };
 		F7FEB5AB19ABC05900D936AC /* rope.png in Resources */ = {isa = PBXBuildFile; fileRef = F7FEB5AA19ABC05900D936AC /* rope.png */; };
 		F7FEB5AD19ABC07300D936AC /* GuitarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */; };
@@ -63,6 +65,7 @@
 		F7361A2D19B8E34C006203BC /* gameover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameover.jpg; sourceTree = "<group>"; };
 		F7361A2F19B91186006203BC /* gameover1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover1.png; sourceTree = "<group>"; };
 		F7361A3119B9229D006203BC /* bgd1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bgd1.jpg; sourceTree = "<group>"; };
+		F7B8EB5319C89E3100EC6E1F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F7FEB5A619ABBA8500D936AC /* GuitarString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarString.swift; sourceTree = "<group>"; };
 		F7FEB5AA19ABC05900D936AC /* rope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rope.png; sourceTree = "<group>"; };
 		F7FEB5AC19ABC07300D936AC /* GuitarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuitarScene.swift; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		B51D3CB019AA8D2500082751 /* GuitarGame */ = {
 			isa = PBXGroup;
 			children = (
+				F7B8EB5319C89E3100EC6E1F /* Extensions.swift */,
 				BCBA547119C7D2DA00A28E93 /* GeneralUser GS SoftSynth v1.44.sf2 */,
 				B51D3CB319AA8D2500082751 /* AppDelegate.swift */,
 				B51D3CB719AA8D2500082751 /* GameScene.swift */,
@@ -242,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F73CD5AF19CA87ED0006F6FD /* GeneralUser GS SoftSynth v1.44.sf2 in Resources */,
 				B51D3CE419AADF1E00082751 /* E.mp3 in Resources */,
 				F7361A2E19B8E34C006203BC /* gameover.jpg in Resources */,
 				F7FEB5B519B10FE700D936AC /* woodbackgrd.jpg in Resources */,
@@ -276,6 +281,7 @@
 				F7FEB5A719ABBA8500D936AC /* GuitarString.swift in Sources */,
 				F7FEB5AD19ABC07300D936AC /* GuitarScene.swift in Sources */,
 				F7361A2C19B8D8B4006203BC /* MusicalNodeUtil.swift in Sources */,
+				F7B8EB5419C89E3100EC6E1F /* Extensions.swift in Sources */,
 				B51D3CB819AA8D2500082751 /* GameScene.swift in Sources */,
 				B51D3CBA19AA8D2500082751 /* GameViewController.swift in Sources */,
 				BCFFD25619C5121C00C94A10 /* midiPlayer.swift in Sources */,

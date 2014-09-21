@@ -30,6 +30,7 @@ enum midiNotes:UInt8 {
     case A  = 9
     case AS = 10
     case B  = 11
+
     
 }
 
@@ -76,10 +77,41 @@ class MidiPlayer {
             }
         }
         
-        loadInstrument(35)
+        loadInstrument(26)
         
         
         
+    }
+    
+    func stringToValue(input:String) -> midiNotes {
+        switch input {
+        case "C":
+            return midiNotes.C
+        case "CS":
+            return midiNotes.CS
+        case "D":
+            return midiNotes.D
+        case "DS":
+            return midiNotes.DS
+        case "E":
+            return midiNotes.E
+        case "F":
+            return midiNotes.F
+        case "FS":
+            return midiNotes.FS
+        case "G":
+            return midiNotes.G
+        case "GS":
+            return midiNotes.GS
+        case "A":
+            return midiNotes.A
+        case "AS":
+            return midiNotes.AS
+        case "B":
+            return midiNotes.B
+        default:
+            return midiNotes.C
+        }
     }
     
     func loadInstrument(var instrument:UInt8){
@@ -94,11 +126,10 @@ class MidiPlayer {
         }
         self.sampler.sendProgramChange(instrument, bankMSB: melodicBank, bankLSB: 0, onChannel: 0)
         
-        
     }
     
     func playNote(var octave:UInt8, var note:UInt8) {
         var midiNote = (octave * 12) + note
-        self.sampler.startNote(65, withVelocity: 64, onChannel: 0)
+        self.sampler.startNote(midiNote, withVelocity: 60, onChannel: 0)
     }
 }

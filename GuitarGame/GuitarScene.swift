@@ -44,11 +44,11 @@ class GuitarScene: SKScene {
     var silver = UIColor(red: 239.0/255.0, green: 215.0/255.0, blue: 239.0/255.0, alpha: 1)
     var gold = UIColor(red: 245.0/255.0, green: 215.0/255.0, blue: 0/255.0, alpha: 1)
     var nodeDictionary = [  "01":"F","02":"A#","03":"D#","04":"G#","05":"C","06":"F",
-                            "11":"F","12":"A#","13":"D#","14":"G#","15":"C","16":"F",
-                            "21":"F","22":"A#","23":"D#","24":"G#","25":"C","26":"F",
-                            "31":"F","32":"A#","33":"D#","34":"G#","35":"C","36":"F",
-                            "41":"F","42":"A#","43":"D#","44":"G#","45":"C","46":"F",
-                            "51":"F","52":"A#","53":"D#","54":"G#","55":"C","56":"F"]
+                            "11":"F#","12":"B","13":"E","14":"A","15":"C#","16":"F#",
+                            "21":"G","22":"C","23":"F","24":"A#","25":"D","26":"G",
+                            "31":"G#","32":"C#","33":"F#","34":"B","35":"D#","36":"G#",
+                            "41":"A","42":"D","43":"G","44":"C","45":"E","46":"A",
+                            "51":"A#","52":"D#","53":"G#","54":"C#","55":"F","56":"A#"]
 
     
     required init(coder aDecoder: NSCoder)  {
@@ -234,7 +234,7 @@ class GuitarScene: SKScene {
         for touch: AnyObject in touches {
             
             let location: CGPoint! = touch.locationInNode(self)
-            let nodeAtPoint = self.nodeAtPoint(location)
+            let nodeAtPoint = self.nodeAtPoint(location) as SKSpriteNode
             if (nodeAtPoint.name != nil) {
                 
                 let nodeall = self.nodesAtPoint(nodeAtPoint.position)
@@ -249,9 +249,11 @@ class GuitarScene: SKScene {
                     var musicNode = notesToBeplayedArray.objectAtIndex(0) as SKSpriteNode
                     println(nodeAtPoint.name!)
                     println(musicNode.name!)
+
                     if(nodeAtPoint.name! == musicNode.name!)
                     {
                         playSound(musicNode.name!)
+                        nodeAtPoint.color = UIColor.clearColor();
                     }
 
                     //println(notesToBeplayedArray.objectAtIndex(0))
@@ -299,35 +301,13 @@ class GuitarScene: SKScene {
     }
     
     func playSound(stringCombination :String){
-        
-        musicArray.addObject(musicStaffUtil.createSoundForNode(stringCombination))
+        midiHelper.playNote(midiHelper.stringToValue(stringCombination).toRaw() , note: 1)
+        //musicArray.addObject(musicStaffUtil.createSoundForNode(stringCombination))
 
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-//        for touch: AnyObject in touches {
-//            
-//            let location: CGPoint! = touch.locationInNode(self)
-//            
-//            let nodeAtPoint = self.nodeAtPoint(location)
-//            
-//            if (nodeAtPoint.name != nil) {
-//                println("NODE FOUND: \(nodeAtPoint.name)")
-//                playSound(nodeAtPoint.name)
-//                println("NODE FOUND: \(self.nodesAtPoint(nodeAtPoint.position)[0])")
-//                let ropeNode = self.nodesAtPoint(nodeAtPoint.position)[0] as SKSpriteNode
-//                if( ropeNode.name == "rope" )
-//                {
-//                    println(notesToBeplayedArray.objectAtIndex(0))
-//                    ropeNode.physicsBody.applyForce(CGVector(5,0))
-//                    //ropeNode.physicsBody.applyImpulse(CGVector(2,0))
-//                }
-//            } else {
-//                println("NULL")
-//            }
-//            
-//        }
-
+        //not implementing for now
     }
     
     func getYPositionforMusicalNote(nextNode: String) -> CGFloat
@@ -366,44 +346,72 @@ class GuitarScene: SKScene {
         musicalNode.position.y = self.getYPositionforMusicalNote(nextNode)
         
         addChild(musicalNode)
+        addMusicalActions(musicalNode)
         notesToBeplayedArray.addObject(musicalNode)
+        
+        
+    }
+    
+    func addMusicalActions(musicalNode: SKSpriteNode){
         
         // Calculate the node's speed and final destination
         let musicalNodeSpeed: CGFloat = 60
         let musicalNodeMoveTime = size.width / musicalNodeSpeed
+        var highlisghNode = self.childNodeWithName(musicalNode.name!) as SKSpriteNode
+
+
+        let highlightZone = SKAction.runBlock({
+            highlisghNode.color = UIColor.cyanColor()
+            highlisghNode.alpha = 0.5
+        })
         
-        // Send the missile on its way
+        
+        let highlightZoneRemove = SKAction.runBlock({
+            highlisghNode.color = UIColor.clearColor()
+        })
+        
+
+        // Send the node on its way
         let actionMove = SKAction.moveTo(CGPointMake(self.playArea.position.x - musicalNode.frame.width/2, musicalNode.position.y), duration: NSTimeInterval(musicalNodeMoveTime))
-        let actionMoveDone = SKAction.removeFromParent()
+        
+        
         var actionrun = SKAction.runBlock({
             self.notesToBeplayedArray.removeObject(musicalNode)
             self.failCount++
             self.missedCountLabel.text = "Missed : " + String(self.failCount)
             if(self.failCount >= 3){
-                self.removeAllChildren()
-                self.playing = false
-                var guitBgrnd = SKSpriteNode(imageNamed: "gameover1.png")
-                guitBgrnd.size = self.size
-                guitBgrnd.position = CGPoint(x: self.frame.size.width/2 , y: guitBgrnd.size.height / 2)
-                self.addChild(guitBgrnd)
-                
-                self.restartbutton.frame = CGRectMake(100, 300, 100, 50)
-                self.restartbutton.backgroundColor = UIColor.blackColor()
-                self.restartbutton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-                self.restartbutton.setTitle("Restart Game", forState: UIControlState.Normal)
-                self.restartbutton.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-                
-                self.view!.addSubview(self.restartbutton)
+               self.gameEndState()
             }
         })
-        musicalNode.runAction(SKAction.sequence([actionMove, actionrun , actionMoveDone]))
+        
+        let actionMoveDone = SKAction.removeFromParent()
+
+        
+        musicalNode.runAction(SKAction.sequence([highlightZone,actionMove, actionrun ,highlightZoneRemove, actionMoveDone]))
+
     }
     
-    func buttonAction(sender:UIButton!)
+    func restartButtonAction(sender:UIButton!)
     {
-        println("Button tapped")
         self.restartbutton.removeFromSuperview()
         startGame()
+    }
+    
+    func gameEndState(){
+        self.removeAllChildren()
+        self.playing = false
+        var guitBgrnd = SKSpriteNode(imageNamed: "gameover1.png")
+        guitBgrnd.size = self.size
+        guitBgrnd.position = CGPoint(x: self.frame.size.width/2 , y: guitBgrnd.size.height / 2)
+        self.addChild(guitBgrnd)
+        
+        self.restartbutton.frame = CGRectMake(100, 300, 100, 50)
+        self.restartbutton.backgroundColor = UIColor.blackColor()
+        self.restartbutton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.restartbutton.setTitle("Restart Game", forState: UIControlState.Normal)
+        self.restartbutton.addTarget(self, action: "restartButtonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view!.addSubview(self.restartbutton)
     }
     
     func createGameStatus(){
