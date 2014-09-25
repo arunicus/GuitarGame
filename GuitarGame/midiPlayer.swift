@@ -34,6 +34,15 @@ enum midiNotes:UInt8 {
     
 }
 
+enum midiNoteForGuitarString:UInt8 {
+    case E = 40
+    case A = 45
+    case D = 50
+    case G = 55
+    case B = 59
+    case E2 = 64
+}
+
 enum midiIstrument:UInt8 {
     case Acoustic_Grand_Piano = 1
     case Bright_Acoustic_Piano = 2
@@ -125,6 +134,33 @@ class MidiPlayer {
             println("error \(e.localizedDescription)")
         }
         self.sampler.sendProgramChange(instrument, bankMSB: melodicBank, bankLSB: 0, onChannel: 0)
+        
+    }
+    
+    func playNoteOnString( var stringNumber:UInt8, var fretNumber:UInt8){
+        // So we need to calculate the fret number
+        var base:UInt8 = 0
+        switch stringNumber {
+        case 1:
+            base = 40
+        case 2:
+            base = 45
+        case 3:
+            base = 50
+        case 4:
+            base = 55
+        case 5:
+            base = 59
+        case 6:
+            base = 64
+            
+        default:
+            println("we dont support more than 6 strings")
+        }
+        
+        var midiNote:UInt8 = base + fretNumber
+        
+        self.sampler.startNote(midiNote , withVelocity: 64, onChannel: 0)
         
     }
     
